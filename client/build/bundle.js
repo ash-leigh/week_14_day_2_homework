@@ -19755,10 +19755,10 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var MovieForm = __webpack_require__(164);
-	var MovieSelect = __webpack_require__(160);
-	var MovieDetails = __webpack_require__(161);
-	var _ = __webpack_require__(162);
+	var MovieForm = __webpack_require__(160);
+	var MovieSelect = __webpack_require__(162);
+	var MovieDetails = __webpack_require__(163);
+	var _ = __webpack_require__(164);
 	
 	var MoviesBox = React.createClass({
 	  displayName: 'MoviesBox',
@@ -19810,6 +19810,71 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var SearchButton = __webpack_require__(161);
+	
+	var MovieForm = React.createClass({
+	  displayName: 'MovieForm',
+	
+	
+	  getInitialState: function getInitialState() {
+	    return { forename: null, surname: null };
+	  },
+	
+	  setForename: function setForename() {
+	    var forename = document.getElementById('forename').value;
+	    this.setState({ forename: forename });
+	  },
+	
+	  setSurname: function setSurname() {
+	    var surname = document.getElementById('surname').value;
+	    this.setState({ surname: surname });
+	  },
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement('input', { id: 'forename', type: 'text', placeholder: 'Forename', onChange: this.setForename }),
+	      React.createElement('input', { id: 'surname', type: 'text', placeholder: 'Surname', onChange: this.setSurname }),
+	      React.createElement(SearchButton, { handleClick: this.props.handleClick, forename: this.state.forename, surname: this.state.surname })
+	    );
+	  }
+	
+	});
+	
+	module.exports = MovieForm;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var SearchButton = React.createClass({
+	  displayName: 'SearchButton',
+	
+	
+	  handleClick: function handleClick() {
+	    this.props.handleClick(this.props.forename, this.props.surname);
+	  },
+	
+	  render: function render() {
+	    return React.createElement('button', { onClick: this.handleClick });
+	  }
+	
+	});
+	
+	module.exports = SearchButton;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
 	
 	var MovieSelect = React.createClass({
 	  displayName: 'MovieSelect',
@@ -19845,7 +19910,7 @@
 	module.exports = MovieSelect;
 
 /***/ },
-/* 161 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19884,7 +19949,7 @@
 	module.exports = MovieDetails;
 
 /***/ },
-/* 162 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -36621,10 +36686,10 @@
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(163)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(165)(module)))
 
 /***/ },
-/* 163 */
+/* 165 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -36638,59 +36703,6 @@
 		return module;
 	}
 
-
-/***/ },
-/* 164 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var SearchButton = __webpack_require__(165);
-	
-	var MovieForm = React.createClass({
-	  displayName: 'MovieForm',
-	
-	
-	  getInitialState: function getInitialState() {
-	    return { forename: null, surname: null };
-	  },
-	
-	  setForename: function setForename(forename) {
-	    this.setState({ forename: forename });
-	  },
-	
-	  setSurname: function setSurname(surname) {
-	    this.setState({ surname: surname });
-	  },
-	
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement('input', { id: 'forename', type: 'text', placeholder: 'Forename', onChange: this.setForename }),
-	      React.createElement('input', { id: 'surname', type: 'text', placeholder: 'Surname', onChange: this.setForename }),
-	      React.createElement(SearchButton, { handleClick: this.props.handleClick, forename: this.state.forename, surname: this.state.surname })
-	    );
-	  }
-	
-	});
-	
-	module.exports = MovieForm;
-
-/***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var SearchButton = function SearchButton(props) {
-	  return React.createElement('button', { onClick: props.handleClick('Johnny', 'Depp') });
-	};
-	
-	module.exports = SearchButton;
 
 /***/ }
 /******/ ]);

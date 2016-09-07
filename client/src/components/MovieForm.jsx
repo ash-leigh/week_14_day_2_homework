@@ -7,11 +7,13 @@ var MovieForm = React.createClass({
     return{forename: null, surname: null}
   },
 
-  setForename: function(forename){
+  setForename: function(){
+    var forename = document.getElementById('forename').value
     this.setState({forename: forename})
   },
 
-  setSurname: function(surname){
+  setSurname: function(){
+    var surname = document.getElementById('surname').value
     this.setState({surname: surname})
   },
 
@@ -19,7 +21,7 @@ var MovieForm = React.createClass({
     return(
       <div>
         <input id='forename' type='text' placeholder='Forename' onChange={this.setForename}/>
-        <input id='surname' type='text' placeholder='Surname' onChange={this.setForename}/>
+        <input id='surname' type='text' placeholder='Surname' onChange={this.setSurname}/>
         <SearchButton handleClick={this.props.handleClick} forename={this.state.forename} surname={this.state.surname}/>
       </div>
     )
